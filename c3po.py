@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import os
+import random
 from gpiozero import LED, Button, DistanceSensor, Motor, Servo
 from time import sleep
 
@@ -8,7 +10,16 @@ button = Button(18)
 button.when_pressed = led.on
 button.when_released = led.off
 
-sensor = DistanceSensor(echo=24, trigger=23)
+# Set the sensor to trigger at 0.305 meters (about 1 foot)
+sensor = DistanceSensor(echo=24, trigger=23, threshold_distance=0.305)
+
+def play_random_audio():
+    voice_lines = ["C3PO.mp3", "Careful.mp3", "R2D2.mp3"]
+    chosen_line = random.choice(voice_lines)
+    os.system(f"mpg123 '{chosen_line}'")
+
+# This runs the audio block in the background whenever someone gets close
+sensor.when_in_range = play_random_audio
 
 motor = Motor(forward=17, backward=27, enable=25)
 actions = {'CW': motor.forward, 'CCW': motor.backward, 'STOP': motor.stop}
