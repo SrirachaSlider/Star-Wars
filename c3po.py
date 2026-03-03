@@ -62,8 +62,6 @@ try:
         print("max")
         sleep(1)
 
-        sound_buzzer()
-
 except KeyboardInterrupt:
     motor.stop()
     led.off()
