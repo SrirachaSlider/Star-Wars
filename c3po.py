@@ -40,7 +40,7 @@ try:
         for action in ['CW', 'STOP', 'CCW', 'STOP']:
             actions[action]()
             print(f"{action}")
-            sleep(5)
+            sleep(1)
 
         servo1.mid()
         servo2.mid()
