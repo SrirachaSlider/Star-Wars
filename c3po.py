@@ -22,7 +22,7 @@ def sound_buzzer():
 
 sensor.when_in_range = sound_buzzer
 
-motor = Motor(forward=17, backward=27, enable=25)
+motor = Motor(forward=19, backward=22, enable=4)
 actions = {'CW': motor.forward, 'CCW': motor.backward, 'STOP': motor.stop}
 
 myCorrection = 0.45
